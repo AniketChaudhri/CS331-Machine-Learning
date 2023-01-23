@@ -1,9 +1,28 @@
+/*
+Team: AdAnSo
+Members:
+1. Adarsh Anand (2003101)
+2. Aniket Chaudhri (2003104)
+3. Somesh Agrawal (20033)
+*/
+
 #include<bits/stdc++.h>
-#include "matrixmul.hpp"
 
 using namespace std;
 
 #define n 600
+
+void matrixmul(vector<vector<int>> &A, vector<vector<int>> &B,
+               vector<vector<int>> &C) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = 0;
+            for (int k = 0; k < n; k++) {
+                C[i][j] += A[i][k] * B[k][j];
+            }
+        }
+    }
+}
 
 int main()
 {
@@ -23,11 +42,11 @@ int main()
             cin>>A[i][j];
         }
     }
-    for (auto x:A){
-        for (auto y:x){
-            cout << y << " ";
-        }
-    }
+    // for (auto x:A){
+    //     for (auto y:x){
+    //         cout << y << " ";
+    //     }
+    // }
     freopen("matrix2.txt","r",stdin);
     for(int i=0;i<n;i++)
     {
@@ -36,21 +55,27 @@ int main()
             cin>>B[i][j];
         }
     }
-    for (auto x:B){
-        for (auto y:x){
-            cout << y << " ";
-        }
-    }
+    // for (auto x:B){
+    //     for (auto y:x){
+    //         cout << y << " ";
+    //     }
+    // }
+    // note time
+    auto start = chrono::high_resolution_clock::now();
     matrixmul(A,B,C);
-    freopen("matrix3.txt","w",stdout);
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            cout<<C[i][j]<<" ";
-        }
-        cout<<endl;
-    }
+    auto end = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::microseconds>(end - start);
+    cout << "Time taken by function: "
+         << duration.count()/1000000.0 << " seconds" << endl;
+    // freopen("matrix3.txt","w",stdout);
+    // for(int i=0;i<n;i++)
+    // {
+    //     for(int j=0;j<n;j++)
+    //     {
+    //         cout<<C[i][j]<<" ";
+    //     }
+    //     cout<<endl;
+    // }
     return 0;
 }
 

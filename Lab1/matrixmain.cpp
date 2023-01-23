@@ -33,13 +33,11 @@ int main()
 
     // Read matrix A and B from matrix1.txt and matrix2.txt
 
-    freopen("matrix1.txt","r",stdin);
-       
-    for(int i=0;i<n;i++)
-    {
-        for(int j=0;j<n;j++)
-        {
-            cin>>A[i][j];
+    freopen("matrix1.txt", "r", stdin);
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> A[i][j];
         }
     }
     // for (auto x:A){
@@ -78,4 +76,3 @@ int main()
     // }
     return 0;
 }
-
